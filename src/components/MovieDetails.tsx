@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
-const API_KEY = "9f3c0d7229f3cdfc56cc0615b285ac32";
-const BASE_URL = "https://api.themoviedb.org/3";
+import dotenv from "dotenv";
+dotenv.config();
 
 type Movie = {
   id: number;
@@ -18,7 +17,7 @@ const MovieDetails = () => {
   useEffect(() => {
     if (!id) return;
     axios
-      .get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
+      .get(`${process.env.BASE_URL}/movie/${id}?api_key=${process.env.API_KEY}`)
       .then((res) => setMovie(res.data))
       .catch((err) => console.error(err));
   }, [id]);

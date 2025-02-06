@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 //import { Card, CardContent } from "@shadcn/ui/card";
 import axios from "axios";
-
-const API_KEY = "9f3c0d7229f3cdfc56cc0615b285ac32";
-const BASE_URL = "https://api.themoviedb.org/3";
+import dotenv from "dotenv";
+dotenv.config();
 
 type Movie = {
   id: number;
@@ -17,7 +16,7 @@ const MovieList = ({ category, title }: { category: string; title: string }) => 
 
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/movie/${category}?api_key=${API_KEY}`)
+      .get(`${process.env.BASE_URL}/movie/${category}?api_key=${process.env.API_KEY}`)
       .then((res) => setMovies(res.data.results))
       .catch((err) => console.error(err));
   }, [category]);

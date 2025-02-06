@@ -3,9 +3,8 @@ import { Moon, Sun, Search } from "lucide-react";
 import { useTheme } from "../context/ThemeProvider";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
-const API_KEY = "9f3c0d7229f3cdfc56cc0615b285ac32";
-const BASE_URL = "https://api.themoviedb.org/3";
+import dotenv from "dotenv";
+dotenv.config();
 
 const Navbar = () => {
   const { toggleTheme, theme } = useTheme();
@@ -17,7 +16,9 @@ const Navbar = () => {
   useEffect(() => {
     if (query.length > 2) {
       axios
-        .get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`)
+        .get(
+          `${process.env.BASE_URL}/search/movie?api_key=${process.env.API_KEY}&query=${query}`
+        )
         .then((res) => setSuggestions(res.data.results))
         .catch((err) => console.error(err));
     } else {
