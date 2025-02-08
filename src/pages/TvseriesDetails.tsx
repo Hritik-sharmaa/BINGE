@@ -8,7 +8,11 @@ type TVSeriesDetails = {
   name: string;
   overview: string;
   genres: { id: number; name: string }[];
-  seasons: { season_number: number; episode_count: number; poster_path: string }[];
+  seasons: {
+    season_number: number;
+    episode_count: number;
+    poster_path: string;
+  }[];
   poster_path: string;
   vote_average: number;
   first_air_date: string;
@@ -65,14 +69,14 @@ const TvSeriesDetails = () => {
 
   if (loading) return <p className="text-center text-xl">Loading...</p>;
 
-  if (!tvseries) return <p className="text-center text-xl">TV Series not found.</p>;
+  if (!tvseries)
+    return <p className="text-center text-xl">TV Series not found.</p>;
 
   return (
     <div
       className={`max-w-6xl mx-auto p-6 ${
-        theme === "dark" ? "bg-zinc-900 text-white" : "bg-white text-black"
-      }`}
-    >
+        theme === "dark" ? "bg-black text-white" : "bg-white text-black"
+      }`}>
       {/* TV Series Header */}
       <div className="flex flex-col md:flex-row items-center gap-8">
         <img
@@ -86,7 +90,9 @@ const TvSeriesDetails = () => {
           <p className="font-semibold flex items-center gap-2">
             <FaStar className="text-yellow-400" /> {tvseries.vote_average} / 10
           </p>
-          <p className="font-semibold">📅 First Air Date: {tvseries.first_air_date}</p>
+          <p className="font-semibold">
+            📅 First Air Date: {tvseries.first_air_date}
+          </p>
         </div>
       </div>
 
@@ -97,8 +103,7 @@ const TvSeriesDetails = () => {
           {tvseries.genres.map((genre) => (
             <span
               key={genre.id}
-              className="px-3 py-1 bg-gray-200 dark:bg-gray-800 rounded-full text-sm"
-            >
+              className="px-3 py-1 bg-gray-200 dark:bg-gray-800 rounded-full text-sm">
               {genre.name}
             </span>
           ))}
@@ -121,7 +126,9 @@ const TvSeriesDetails = () => {
                   alt={actor.name}
                   className="w-24 h-24 rounded-full object-cover mb-2"
                 />
-                <span className="text-center text-sm font-semibold">{actor.name}</span>
+                <span className="text-center text-sm font-semibold">
+                  {actor.name}
+                </span>
                 <span className="text-xs">{actor.character}</span>
               </div>
             ))
@@ -136,7 +143,9 @@ const TvSeriesDetails = () => {
         <h2 className="text-2xl font-semibold">Seasons</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
           {tvseries.seasons.map((season) => (
-            <div key={season.season_number} className="flex flex-col items-center">
+            <div
+              key={season.season_number}
+              className="flex flex-col items-center">
               {season.poster_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w500${season.poster_path}`}

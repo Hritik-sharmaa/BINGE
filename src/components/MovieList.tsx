@@ -33,7 +33,7 @@ const MovieList = ({
   return (
     <div
       className={`${
-        theme === "dark" ? "bg-zinc-900 text-white" : "bg-white text-black"
+        theme === "dark" ? "bg-black text-white" : "bg-white text-black"
       } px-25 pt-10`}>
       <div className="flex items-center ">
         <h2 className="text-5xl font-bold mb-6">{title}</h2>

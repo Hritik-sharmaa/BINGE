@@ -43,7 +43,7 @@ const MoviesCategory = () => {
   return (
     <div
       className={`px-6 md:px-25 pt-10 min-h-screen ${
-        theme === "dark" ? "bg-zinc-900 text-white" : "bg-white text-black"
+        theme === "dark" ? "bg-black text-white" : "bg-white text-black"
       }`}>
       <div className="flex items-center justify-between">
         <h2 className="text-5xl font-bold mb-6">{title} Movies</h2>

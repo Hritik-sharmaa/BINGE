@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div
       className={`${
-        theme === "dark" ? "bg-zinc-900 text-white" : "bg-white text-black"
+        theme === "dark" ? "bg-black text-white" : "bg-white text-black"
       } text-center py-8`} // Conditional class based on the theme
     >
       Created by{" "}

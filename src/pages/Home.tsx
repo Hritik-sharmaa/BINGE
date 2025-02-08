@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { motion } from "framer-motion"; // Import Framer Motion
-import ThemeProvider from "../context/ThemeProvider";
+import { motion } from "framer-motion";
+import ThemeProvider, { useTheme } from "../context/ThemeProvider";
 import Navbar from "../components/Navbar";
 import MovieDetails from "../components/MovieDetails";
 import Movies from "./Movies";
@@ -18,10 +18,14 @@ const fadeInUp = {
 };
 
 const HomePage = () => {
+  const { theme} = useTheme();
   return (
     <>
-      <div className="flex justify-center items-center text-5xl font-extrabold pt-20 bg-zinc-900">
-        <h1 className="">Movies</h1>
+      <div
+        className={`flex justify-center items-center text-5xl font-extrabold pt-20 ${
+          theme === "dark" ? "bg-black text-white" : "bg-white text-black"
+        }`}>
+        <h1>Movies</h1>
       </div>
       <motion.div
         initial="hidden"
@@ -35,8 +39,11 @@ const HomePage = () => {
         <motion.div variants={fadeInUp}>
           <MovieList category="upcoming" title="Upcoming Movies" />
         </motion.div>
-        <div className="flex justify-center items-center text-5xl font-extrabold pt-20 bg-zinc-900">
-          <h1>Tv series </h1>
+        <div
+          className={`flex justify-center items-center text-5xl font-extrabold pt-20 ${
+            theme === "dark" ? "bg-black text-white" : "bg-white text-black"
+          }`}>
+          <h1>Tv series</h1>
         </div>
         <motion.div variants={fadeInUp}>
           <TvseriesList category="top_rated" title="Top Rated" />
