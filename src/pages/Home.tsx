@@ -20,8 +20,8 @@ const fadeInUp = {
 const HomePage = () => {
   return (
     <>
-      <div className="flex justify-center items-center text-5xl font-extrabold mt-20">
-        <h1>Movies</h1>
+      <div className="flex justify-center items-center text-5xl font-extrabold pt-20 bg-zinc-900">
+        <h1 className="">Movies</h1>
       </div>
       <motion.div
         initial="hidden"
@@ -35,7 +35,7 @@ const HomePage = () => {
         <motion.div variants={fadeInUp}>
           <MovieList category="upcoming" title="Upcoming Movies" />
         </motion.div>
-        <div className="flex justify-center items-center text-5xl font-extrabold mt-20">
+        <div className="flex justify-center items-center text-5xl font-extrabold pt-20 bg-zinc-900">
           <h1>Tv series </h1>
         </div>
         <motion.div variants={fadeInUp}>
