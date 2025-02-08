@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  ReactNode,
-} from "react";
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
 type ThemeContextType = {
   theme: string;
@@ -20,12 +14,22 @@ export const useTheme = () => {
 };
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<string>(
-    localStorage.getItem("theme") || "light"
-  );
+  const [theme, setTheme] = useState<string>(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
+    const rootElement = document.documentElement;  // This is the <html> element
+    const bodyElement = document.body;  // This is the <body> element
+
+    // Apply or remove the dark class based on the theme
+    if (theme === "dark") {
+      rootElement.classList.add("dark");
+      bodyElement.classList.add("dark");
+    } else {
+      rootElement.classList.remove("dark");
+      bodyElement.classList.remove("dark");
+    }
+
+    // Save the theme to localStorage for persistence
     localStorage.setItem("theme", theme);
   }, [theme]);
 
