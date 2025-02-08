@@ -34,21 +34,18 @@ Clone the repository to your local machine:
 ### 2. Install Dependencies
 Navigate to the project directory and install the required dependencies using npm:
 
-```bash
 cd binge
 npm install
 
 ### 3. Set Up Environment Variables
 Create a `.env` file in the root of the project and add your TMDb API key:
 
-```bash
 VITE_API_KEY=your_tmdb_api_key
 VITE_BASE_URL=https://api.themoviedb.org/3
 
 ### 4. Run the Development Server
 Once the dependencies are installed and the `.env` file is set up, run the development server:
 
-```bash
 npm run dev
 
 ### video
@@ -56,7 +53,4 @@ npm run dev
 https://github.com/user-attachments/assets/2b913cbd-c582-49bc-ac60-e2d32dad093f
 
 
-
-
-```bash
 git clone https://github.com/Hritik-sharmaa/binge.git
